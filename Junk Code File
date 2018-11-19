@@ -1,0 +1,60 @@
+Junk Code File
+
+            try {
+                while(true) {
+                    String line = in.readLine();
+					// String line = in.readLine();
+					// if (line != null){
+					// System.out.println(line);
+     //                for (Handler element : handlers) {
+     //                    element.out.println(line);
+     //                }
+					// }
+                    
+                    // TODO - handle incoming commands from this client (for now we just print the command)
+                    // handle a "New Message" command from a client
+                if(line.startsWith("NEW_MESSAGE")) {
+                    // TODO - READ the username, etc.
+                    String username = "TODO";
+                    String text = "TODO";
+
+                    // read the bytes of the avatar
+                    ChatAvatar avatar = ChatAvatar.read(in);
+
+                    ChatMessage m = new ChatMessage(avatar, username, text);
+                        
+                    // TODO - deal with the message
+                }
+
+                // handle a "Get Messages" command from a client
+                else if(line.startsWith("GET_MESSAGES")) {
+                    Handler h = this;
+                    // h is now the "current connection"
+                    // h.in lets you read from the connection, and h.out lets you write to the connection
+                    // h.handlers gives you a list of all the handlers (e.g., all the open connections to clients)
+                    // You can add other variables (e.g., a queue of messages), if you want to store per-connection state.
+
+                    String s = "TODO - somehow encode the messages needed by this client";
+                    h.out.println(s);
+                }else if(line != null){
+
+                    String username = "TODO";
+
+                    String text = "TODO";
+
+                    // read the bytes of the avatar
+                    ChatAvatar avatar = ChatAvatar.read(in);
+
+                    ChatMessage m = new ChatMessage(avatar, username, text);
+
+                    for (Handler element : handlers) {
+                        element.out.println(m);
+                     }
+
+                }
+
+                }
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
+        }
